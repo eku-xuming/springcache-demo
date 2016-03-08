@@ -2,8 +2,6 @@ package com.eku001.demo.repository;
 
 import com.eku001.demo.domain.Shop;
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;

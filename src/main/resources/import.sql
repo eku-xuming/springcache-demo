@@ -1,0 +1,1 @@
+INSERT INTO d_shop (id,name,intro,deleted) VALUES ('59B11D4A750E8400E216446655440000  ','test-shop','This is a test shop.',FALSE );

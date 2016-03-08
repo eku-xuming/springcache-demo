@@ -43,13 +43,13 @@ public class BookServiceCacheImpl extends BookServiceImpl implements BookService
     }
 
     @Override
-    @CachePut(value = "d-book", key = "#name")
+    @CachePut(value = "d-book", key = "#newName")
     public Book updateName(final String name, final String newName) {
         return super.updateName(name, newName);
     }
 
     @Override
-    @CachePut(value = "d-book", key = "#newName")
+    @CachePut(value = "d-book", key = "#name")
     public Book updateIntro(final String name, final String intro) {
         return super.updateIntro(name, intro);
     }
