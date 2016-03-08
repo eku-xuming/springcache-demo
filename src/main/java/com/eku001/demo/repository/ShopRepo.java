@@ -15,6 +15,5 @@ import java.util.UUID;
 @Validated
 @Component
 public interface ShopRepo extends JpaRepository<Shop, UUID> {
-    @NotNull
-    Shop findByName(@NotBlank String name);
+    Shop findByNameAndDeletedFalse(@NotBlank String name);
 }

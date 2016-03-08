@@ -18,9 +18,7 @@ import java.util.UUID;
 @Validated
 @Component
 public interface ShelfRepo extends JpaRepository<Shelf, UUID> {
-    @NotNull
     Shelf findByName(@NotBlank String name);
 
-    @NotNull
     Page<Shelf> findByShopName(@NotBlank String name, @NotNull Pageable page);
 }

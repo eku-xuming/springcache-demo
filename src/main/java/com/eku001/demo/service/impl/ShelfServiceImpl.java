@@ -27,7 +27,7 @@ public class ShelfServiceImpl implements ShelfService {
 
     @Override
     public Shelf create(String shopName, String name) {
-        final Shop shop = shopRepo.findByName(shopName);
+        final Shop shop = shopRepo.findByNameAndDeletedFalse(shopName);
         final Shelf shelf = new Shelf(shop, name);
         shelfRepo.save(shelf);
         return shelf;

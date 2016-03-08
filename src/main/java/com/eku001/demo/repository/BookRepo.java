@@ -17,9 +17,7 @@ import java.util.UUID;
 @Validated
 @Component
 public interface BookRepo extends JpaRepository<Book, UUID> {
-    @NotNull
     Book findByName(@NotBlank String name);
 
-    @NotNull
     Page<Book> findByShelfName(@NotBlank String name, @NotNull Pageable page);
 }

@@ -1,9 +1,9 @@
 package com.eku001.demo.service.impl;
 
 import com.eku001.demo.domain.Shop;
+import com.eku001.demo.exception.EntityNotFound;
 import com.eku001.demo.repository.ShopRepo;
 import com.eku001.demo.service.ShopService;
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,21 +28,33 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public Shop delete(String name) {
-        Shop shop = shopRepo.findByName(name);
+        Shop shop = shopRepo.findByNameAndDeletedFalse(name);
+        if (shop == null) {
+            throw new EntityNotFound();
+        }
+
         shop.setDeleted(true);
         return shop;
     }
 
     @Override
     public Shop updateName(String name, String newName) {
-        Shop shop = shopRepo.findByName(name);
+        Shop shop = shopRepo.findByNameAndDeletedFalse(name);
+        if (shop == null) {
+            throw new EntityNotFound();
+        }
+
         shop.setName(newName);
         return shop;
     }
 
     @Override
     public Shop updateIntro(String name, String intro) {
-        Shop shop = shopRepo.findByName(name);
+        Shop shop = shopRepo.findByNameAndDeletedFalse(name);
+        if (shop == null) {
+            throw new EntityNotFound();
+        }
+
         shop.setIntro(intro);
         return shop;
     }
@@ -54,11 +66,21 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public Shop findByName(String name) {
-        return shopRepo.findByName(name);
+        Shop shop = shopRepo.findByNameAndDeletedFalse(name);
+        if (shop == null) {
+            throw new EntityNotFound();
+        }
+
+        return shop;
     }
 
     @Override
     public Shop findById(final String id) {
-        return shopRepo.findOne(UUID.fromString(id));
+        final Shop shop = shopRepo.findOne(UUID.fromString(id));
+        if (shop == null) {
+            throw new EntityNotFound();
+        }
+
+        return shop;
     }
 }

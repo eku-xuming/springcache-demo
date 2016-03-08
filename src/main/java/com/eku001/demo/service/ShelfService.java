@@ -13,21 +13,15 @@ import javax.validation.constraints.NotNull;
  */
 @Validated
 public interface ShelfService {
-    @NotNull(message = "对象不存在")
     Shelf create(@NotBlank(message = "不能为空") String shopName, @NotBlank(message = "不能为空") String name);
 
-    @NotNull(message = "对象不存在")
     Shelf delete(@NotBlank(message = "不能为空") String name);
 
-    @NotNull(message = "对象不存在")
     Shelf updateName(@NotBlank(message = "不能为空") String name, @NotBlank(message = "不能为空") String newName);
 
-    @NotNull(message = "对象不存在")
     Shelf updateIntro(@NotBlank(message = "不能为空") String name, @NotBlank(message = "不能为空") String intro);
 
-    @NotNull(message = "对象不存在")
     Page<Shelf> findAll(@NotNull(message = "不能为空") Pageable page);
 
-    @NotNull(message = "对象不存在")
     Shelf findByName(@NotBlank(message = "不能为空") String name);
 }
